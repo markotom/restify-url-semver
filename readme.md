@@ -13,25 +13,28 @@ $ npm install restify-url-semver --save
 ```js
 var restify = require('restify');
 var versioning = require('restify-url-semver');
-var server = restify.createServer({
-  versions: ['1.0.0', '1.2.0', '1.2.3', '2.0.0']
-});
+var server = restify.createServer();
 
-server.pre(versioning());
+// Add restify-url-semver middleware
+server.pre(versioning({ prefix: '/api' }));
 
-// [protocol]://[host]/v1/foo
-// [protocol]://[host]/v1.0/foo
-// [protocol]://[host]/v1.0.0/foo
+// [protocol]://[host]/api/v1/foo
 server.get({ path: '/foo', version: '1.0.0' }, function (req, res, next) {
-  console.log(req.headers['API-version']); // 1.0.0
+  console.log(req.headers['accept-version']); // 1.0.0
 });
 
-// [protocol]://[host]/v1.2/foo
-// [protocol]://[host]/v1.2.0/foo
+// [protocol]://[host]/api/v1.2/foo
 server.get({ path: '/foo', version: '1.2.0' }, function (req, res, next) {
-  console.log(req.headers['API-version']); // 1.2.0
+  console.log(req.headers['accept-version']); // 1.2.0
 });
 ```
+
+Now these formats are available:
+
++ `[protocol]://[host]/api/v[x]/foo`
++ `[protocol]://[host]/api/v[x].[y]/foo`
++ `[protocol]://[host]/api/v[x].[y].[z]/foo`
+
 
 ## License
 

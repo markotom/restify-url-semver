@@ -69,15 +69,15 @@ describe('Restify URL without prefix', function () {
   });
 
   before(function () {
-    this.server.get({ path: '/example', versions: '1.0.0' }, function (req, res) {
+    this.server.get({ path: '/example', version: '1.0.0' }, function (req, res) {
       res.send({ message: 'accept-version: 1.0.0' });
     });
 
-    this.server.get({ path: '/example', versions: '1.2.0' }, function (req, res) {
+    this.server.get({ path: '/example', version: '1.2.0' }, function (req, res) {
       res.send({ message: 'accept-version: 1.2.0' });
     });
 
-    this.server.get({ path: '/example', versions: '1.2.3' }, function (req, res) {
+    this.server.get({ path: '/example', version: '1.2.3' }, function (req, res) {
       res.send({ message: 'accept-version: 1.2.3' });
     });
   });
@@ -116,15 +116,15 @@ describe('Restify URL with prefix', function () {
   });
 
   before(function () {
-    this.server.get({ path: '/example', versions: '1.0.0' }, function (req, res) {
+    this.server.get({ path: '/example', version: '1.0.0' }, function (req, res) {
       res.send({ message: 'accept-version: 1.0.0' });
     });
 
-    this.server.get({ path: '/example', versions: '1.2.0' }, function (req, res) {
+    this.server.get({ path: '/example', version: '1.2.0' }, function (req, res) {
       res.send({ message: 'accept-version: 1.2.0' });
     });
 
-    this.server.get({ path: '/example', versions: '1.2.3' }, function (req, res) {
+    this.server.get({ path: '/example', version: '1.2.3' }, function (req, res) {
       res.send({ message: 'accept-version: 1.2.3' });
     });
   });
