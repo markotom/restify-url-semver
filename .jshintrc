@@ -1,0 +1,27 @@
+{
+  "node": true,
+  "curly": true,
+  "eqeqeq": true,
+  "eqnull": true,
+  "globalstrict": true,
+  "indent": 2,
+  "latedef": true,
+  "newcap": true,
+  "quotmark": "single",
+  "strict": true,
+  "trailing": true,
+  "undef": true,
+  "unused": true,
+  "globals": {
+    "describe": false,
+    "it": false,
+    "before": false,
+    "beforeEach": false,
+    "after": false,
+    "afterEach": false
+  },
+  "maxparams": 5,
+  "maxdepth": 3,
+  "maxstatements": 25,
+  "maxcomplexity": 10
+}

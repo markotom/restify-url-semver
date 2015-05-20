@@ -1,0 +1,29 @@
+{
+  "name": "restify-url-semver",
+  "version": "0.0.1",
+  "description": "Get restify version from URL and set as header",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/markotom/restify-url-semver"
+  },
+  "keywords": [
+    "restify",
+    "version",
+    "versioning",
+    "url",
+    "rest",
+    "api",
+    "semver",
+    "API-Version"
+  ],
+  "author": "Marco Godínez <markotom@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/markotom/restify-url-semver/issues"
+  },
+  "homepage": "https://github.com/markotom/restify-url-semver"
+}
