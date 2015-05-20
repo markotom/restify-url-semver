@@ -2,6 +2,9 @@ Restify URL SemVer
 ==================
 > Extract semantic version from URL for [restify](http://mcavage.me/node-restify/).
 
+[![Build Status](https://travis-ci.org/markotom/restify-url-semver.svg?branch=master)](https://travis-ci.org/markotom/restify-url-semver)
+[![npm version](https://badge.fury.io/js/restify-url-semver.svg)](http://badge.fury.io/js/restify-url-semver)
+
 # Install
 
 ```js
