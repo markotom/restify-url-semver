@@ -25,5 +25,14 @@
   "bugs": {
     "url": "https://github.com/markotom/restify-url-semver/issues"
   },
-  "homepage": "https://github.com/markotom/restify-url-semver"
+  "homepage": "https://github.com/markotom/restify-url-semver",
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "sinon": "^1.14.1",
+    "supertest": "^1.0.1"
+  },
+  "dependencies": {
+    "restify": "^3.0.3",
+    "semver": "^4.3.4"
+  }
 }
