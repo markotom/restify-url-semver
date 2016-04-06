@@ -9,6 +9,7 @@ module.exports = function (options) {
   options.prefix = options.prefix || '';
 
   return function (req, res, next) {
+    req.originalUrl = req.url;
     req.url = req.url.replace(options.prefix, '');
 
     var pieces = req.url.replace(/^\/+/, '').split('/');
