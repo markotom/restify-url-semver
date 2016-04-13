@@ -38,6 +38,23 @@ Now these formats are available:
 + `[protocol]://[host]/api/v[x].[y]/foo`
 + `[protocol]://[host]/api/v[x].[y].[z]/foo`
 
+To exclude routes from being versioned, pass a regular expression that matches
+routes to exclude for the `exclude` option:
+
+```js
+// Add restify-url-semver middleware
+server.pre(versioning({ prefix: '/api', exclude: /healthcheck/ }));
+
+// [protocol]://[host]/healthcheck
+server.get({ path: '/healthcheck' }, function (req, res, next) {
+  res.send(200);
+});
+
+// [protocol]://[host]/api/v1/foo
+server.get({ path: '/foo', version: '1.0.0' }, function (req, res, next) {
+  console.log(req.headers['accept-version']); // 1.0.0
+});
+```
 
 ## License
 
