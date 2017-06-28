@@ -153,3 +153,38 @@ describe('Restify URL with prefix', function () {
     });
   });
 });
+
+describe('Restify URL with exclude', function () {
+  before(function () {
+    this.server = restify.createServer();
+    this.server.pre(versioning({ prefix: '/api', exclude: /healthcheck/ }));
+
+    this.agent = request(this.server);
+  });
+
+  before(function () {
+    this.server.get({ path: '/healthcheck' }, function (req, res) {
+      res.send({ message: 'OK' });
+    });
+
+    this.server.get({ path: '/example', version: '1.0.0' }, function (req, res) {
+      res.send({ message: 'accept-version: 1.0.0' });
+    });
+  });
+
+  it('should ignore routes that match the exclude regex', function (done) {
+    this.agent.get('/healthcheck').expect(200, function (err, res) {
+      if (err) { return done(err); }
+      assert.equal(res.body.message, 'OK');
+      done();
+    });
+  });
+
+  it('should enforce versioning for routes that do not match the exclude regex', function (done) {
+    this.agent.get('/api/v1/example').expect(200, function (err, res) {
+      if (err) { return done(err); }
+      assert.equal(res.body.message, 'accept-version: 1.0.0');
+      done();
+    });
+  });
+});

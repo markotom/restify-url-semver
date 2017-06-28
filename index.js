@@ -7,9 +7,15 @@ module.exports = function (options) {
   options = options || {};
 
   options.prefix = options.prefix || '';
+  options.exclude = options.exclude || null;
 
   return function (req, res, next) {
     req.originalUrl = req.url;
+
+    if (options.exclude instanceof RegExp && options.exclude.test(req.originalUrl)) {
+      return next();
+    }
+
     req.url = req.url.replace(options.prefix, '');
 
     var pieces = req.url.replace(/^\/+/, '').split('/');
