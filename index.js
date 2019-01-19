@@ -20,7 +20,12 @@ module.exports = function (options) {
     version = version.replace(/v(\d{1})/, '$1.0.0')
 
     if (semver.valid(version)) {
-      req.url = req.url.substr(pieces[0].length + 1)
+      var urlOffset = pieces[0].length + 1
+      if (urlOffset < req.url.length) {
+        req.url = req.url.substring(urlOffset)
+      } else {
+        req.url = '/';
+      }
       req.headers = req.headers || []
       req.headers['accept-version'] = version
     } else {
