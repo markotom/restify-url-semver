@@ -7,8 +7,10 @@ module.exports = function (options) {
   options = options || {}
 
   options.prefix = options.prefix || ''
+  options.exclude = options.exclude || []
 
   return function (req, res, next) {
+	if (options.exclude.some(rx => new RegExp(rx).test(req.url))) return next()
     req.originalUrl = req.url
     req.url = req.url.replace(options.prefix, '')
 
