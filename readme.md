@@ -19,7 +19,7 @@ var versioning = require('restify-url-semver')
 var server = restify.createServer()
 
 // Add restify-url-semver middleware
-server.pre(versioning({ prefix: '/api', exclude: '/web/*' }))
+server.pre(versioning({ prefix: '/api', exclude: ['/web', '/static'] }))
 
 // [protocol]://[host]/api/v1/foo
 server.get({ path: '/foo', version: '1.0.0' }, function (req, res, next) {
